@@ -1,14 +1,22 @@
-// import * as fs from 'node:fs/promises'
-// import { createWriteStream } from 'node:fs'
+import { files } from './lib/files'
+import { copy } from 'fs-extra'
 
-import { getList } from "./lib/getList"
+const srcDir = process.env.SOURCE_DIR
+const dstDir = process.env.DESTINATION_DIR
 
-const directoryPath = ''
-// const fileExtension = ['.m4a', '.m4b', '.mp3', '.wav', '.aa4', '.aiff']
-const fileExtension = ['.yml', '.yaml']
+const copyFunc = async (file: string) => {
+  await copy(srcDir + file, dstDir + file)
+  console.log('File Complete: ' + file)
+}
 
 const main = async () => {
- await getList(directoryPath, fileExtension)
+  try {
+    for (const file of files) {
+      await copyFunc(file)
+    }
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 main()

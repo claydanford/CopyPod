@@ -5,14 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "exit 0",
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "node ./out/index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
+  "author": "Clay Danford <crd013@gmail.com>",
+  "license": "Apache-2.0",
+  "type": "commonjs",
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.19",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0"
   }
 }
